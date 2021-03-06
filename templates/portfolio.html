@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% block title %} Portfolio {% endblock %}
+{% block content %}
+{% if session['name'] %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <form action="/portfolio" method="POST">
+                    <h2>Register {{session['name']}}'s Portfolio</h2>
+                    <div class="form-group">
+                        <label>학위:</label>
+                        <input type="radio" name="chk_info" value="중졸"> 중졸
+                        <input type="radio" name="chk_info" value="고졸"> 고졸
+                        <input type="radio" name="chk_info" value="재학"> 대학교 재학
+                        <input type="radio" name="chk_info" value="학사"> 학사
+                        <input type="radio" name="chk_info" value="석사"> 석사
+                        <input type="radio" name="chk_info" value="석사"> 박사</br>
+                        <label>학교 이름: </label>
+                        <input type="text" class="form-control" name="school_name">
+                        <label>전공: </label>
+                        <input type="text" class="form-control" name="major_in">
+                        <label>프로젝트: </label>
+                        <input type="text" class="form-control" name="project">
+                        <label>자격증: </label>
+                        <input type="text" class="form-control" name="certificate">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% else %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            You need to Sign In
+            <div class="form-group">
+                <button class="btn btn-primary">Sign In</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{%endblock%}
